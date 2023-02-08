@@ -1,14 +1,2 @@
 #!/bin/bash
-for file in *.html; do
-  # Check if file exists in the parent directory
-  if [ ! -e ../$file ]; then
-    # If it doesn't, copy it to the parent directory
-    cp "$file" ../
-  else
-    # If it does, check if the version in the current directory is newer
-    if [ "$file" -nt "../$file" ]; then
-      # If it is, copy it to the parent directory and overwrite the old version
-      cp "$file" ../
-    fi
-  fi
-done
+for file in *.html; do cp -u "$file" ../; done
